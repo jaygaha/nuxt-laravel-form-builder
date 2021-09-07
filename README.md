@@ -1,6 +1,7 @@
 # Form Builder using Nuxt js and Lumen in Docker
 
 Demo of Form Template & Form GUI.
+
 Package used for Form Builder, please visit: https://github.com/sethsandaru/vue-form-builder
 
 Nuxt js is used for Frontend.
@@ -10,7 +11,7 @@ Lumen 8.2.4 is used for Backend API.
 ## Installation
 ```bash
 $ git clone git@repos.buzzreach.co.jp:playground/nuxt-js-form-builder.git
-$ cd nuxt-js-form-builde
+$ cd nuxt-js-form-builder
 $ docker compose up -d --build
 ```
 Open [http://localhost:8090](http://localhost:8090) url in browser.
