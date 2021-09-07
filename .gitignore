@@ -1,0 +1,4 @@
+backend/vendor
+frontend/.nuxt
+frontend/node_modules
+docker/mysql/data
