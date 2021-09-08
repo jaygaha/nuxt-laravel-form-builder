@@ -33,7 +33,10 @@
                   <td>{{ form.title }}</td>
                   <td>{{ form.version }}</td>
                   <td>{{ form.mapping_url }}</td>
-                  <td><a :href="'/edit/' + form.id">Edit</a>|Preview</td>
+                  <td>
+                    <NuxtLink :to="'/edit/' + form.id">Edit</NuxtLink> |
+                    <NuxtLink :to="'form/' + form.mapping_url">Preview</NuxtLink>
+                  </td>
                 </tr>
               </tbody>
             </table>

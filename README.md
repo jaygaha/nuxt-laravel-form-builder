@@ -45,3 +45,8 @@ $ cd ..
 $ docker compose exec backend-dynamic-forms bash
 $ root@fe5aa52e94d3:/var/www/backend# php artisan migrate
 ```
+
+## Required form elements
+While creating `Submit` button two emiting fields `must` be filled.
+`Emitting Code` and `Emitting Value` fileds should be filled with `api-save-form-data` value.
+While submitting the rendered form data, form data are handled with vue method.

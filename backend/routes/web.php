@@ -22,4 +22,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('store', 'FormController@store');
     $router->get('edit/{id}', 'FormController@edit');
     $router->put('update/{id}', 'FormController@update');
+    $router->put('update/{id}', 'FormController@update');
+
+    $router->get('get-form-by-slug/{slug}', 'PageFormController@getFormBySlug');
 });
