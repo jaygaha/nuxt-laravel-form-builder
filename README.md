@@ -1,4 +1,4 @@
-# Form Builder using Nuxt js and Lumen in Docker
+# Form Builder using Nuxt js and Lumen in Dockerize Container
 
 Demo of Form Template & Form GUI.
 
@@ -10,8 +10,8 @@ Lumen 8.2.4 is used for Backend API.
 
 ## Installation
 ```bash
-$ git clone git@repos.buzzreach.co.jp:playground/nuxt-js-form-builder.git
-$ cd nuxt-js-form-builder
+$ git clone https://github.com/jaygaha/nuxt-lumen-form-builder.git
+$ cd nuxt-lumen-form-builder
 $ docker compose up -d --build
 ```
 Open [http://localhost:8090](http://localhost:8090) url in browser.
