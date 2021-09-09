@@ -1,9 +1,3 @@
-setup:
-  addons:
-    - plan: heroku-nuxt-mysql
-      as: DATABASE
-  config:
-  // .env vars
 build:
   docker:
     nginx-dynamic-forms: docker/nginx/Dockerfile
