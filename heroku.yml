@@ -1,73 +1,12 @@
-version: '3.7'
-
-services:
-  # Server container
-  nginx-dynamic-forms:
-    build:
-      context: ./docker/nginx
-      dockerfile: Dockerfile
-    container_name: nginx-dynamic-forms
-    volumes:
-      - ./:/var/www
-      - ./docker/nginx/logs:/var/log/nginx
-    ports:
-      # Nuxt port
-      - 8090:90
-      # Lumen port
-      - 8091:91
-    depends_on:
-      - frontend-dynamic-forms
-      - backend-dynamic-forms
-    networks:
-      - dynamic-form-network
-
-  # PHP FastCGI Process Manager container
-  backend-dynamic-forms:
-    build:
-      context: ./docker/php
-      dockerfile: Dockerfile
-    container_name: backend-dynamic-forms
-    volumes:
-      - ./backend:/var/www/backend
-    environment:
-      # If you down want to use xDebug, set remote_enable=0
-      XDEBUG_CONFIG: "remote_enable=0"
-      PHP_IDE_CONFIG: "serverName=Docker"
-    depends_on:
-      - mysql-dynamic-forms
-    networks:
-      - dynamic-form-network
-
-  # MySQL database container
-  mysql-dynamic-forms:
-    build:
-        context: ./docker/mysql
-        dockerfile: Dockerfile
-    container_name: mysql-dynamic-forms
-    ports:
-        - '3308:3306'
-    volumes:
-        - './docker/mysql/data:/var/lib/mysql'
-    environment:
-        MYSQL_ROOT_PASSWORD: '12345678'
-    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    networks:
-      - dynamic-form-network
-
-  # Frontend container
-  frontend-dynamic-forms:
-    build:
-      context: docker/node
-      dockerfile: Dockerfile
-    container_name: frontend-dynamic-forms
-    # command: sh -c "npm install && npm run dev"
-    environment:
-      NODE_ENV: development
-    volumes:
-      - ./frontend:/var/www/frontend
-    networks:
-      - dynamic-form-network
-
-networks:
-  dynamic-form-network:
-    driver: bridge
+setup:
+  addons:
+    - plan: heroku-nuxt-mysql
+      as: DATABASE
+  config:
+  // .env vars
+build:
+  docker:
+    nginx-dynamic-forms: docker/nginx/Dockerfile
+    backend-dynamic-forms: docker/php/Dockerfile
+    mysql-dynamic-forms: docker/mysql/Dockerfile
+    frontend-dynamic-forms: docker/node/Dockerfile
